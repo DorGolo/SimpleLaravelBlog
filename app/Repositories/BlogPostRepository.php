@@ -5,13 +5,13 @@ namespace App\Repositories;
 use App\Model\BlogPost;
 use App\Repositories\Interfaces\BlogPostRepositoryInterface;
 
-class UserRepository extends BaseRepository implements BlogPostRepositoryInterface
+class BlogPostRepository extends BaseRepository implements BlogPostRepositoryInterface
 {
 
    /**
-    * UserRepository constructor.
+    * BlogPostRepository constructor.
     *
-    * @param User $model
+    * @param BlogPost $model
     */
    public function __construct(BlogPost $model)
    {
@@ -26,7 +26,7 @@ class UserRepository extends BaseRepository implements BlogPostRepositoryInterfa
        return $this->model->all();    
    }
 
-   public function getBlogsOnPage(): Collection
+   public function getBlogsOnPage(int $page = 1, int $limit = 20): Collection
    {
        return $this->model->all();
    }
