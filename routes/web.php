@@ -17,4 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('blog', '\App\Http\Controllers\BlogController');
+Route::controller(\App\Http\Controllers\BlogController::class)->group(function () {
+    Route::get('/blog', 'index');
+    
+    Route::get('/blog/{blogPostId}', 'show');
+    Route::get('/blog/{blogPostId}/edit', 'edit');
+    Route::get('/blog/create/post', 'create');
+
+    Route::post('/blog/{blogPostId}/edit', 'update');
+    Route::post('/blog/create/post', 'store');
+    
+    Route::delete('/blog/{blogPostId}', 'destroy');
+});

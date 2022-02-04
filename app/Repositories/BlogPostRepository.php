@@ -2,7 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Model\BlogPost;
+use App\Models\BlogPost;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
+
 use App\Repositories\Interfaces\BlogPostRepositoryInterface;
 
 class BlogPostRepository extends BaseRepository implements BlogPostRepositoryInterface
@@ -30,4 +33,10 @@ class BlogPostRepository extends BaseRepository implements BlogPostRepositoryInt
    {
        return $this->model->all();
    }
+
+   public function save(array $blogPost): BlogPost
+   {
+
+   }
+
 }
