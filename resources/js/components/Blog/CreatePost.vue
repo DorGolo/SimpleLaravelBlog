@@ -5,12 +5,12 @@
             <div class="col-md-6">
                 <form @submit.prevent="addblogPost">
                     <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" v-model="blogPost.name">
+                        <label>Title</label>
+                        <input type="text" class="form-control" v-model="blogPost.title">
                     </div>
                     <div class="form-group">
                         <label>Content</label>
-                        <input type="textbox" class="form-control" v-model="blogPost.detail">
+                        <textarea class="form-control" v-model="blogPost.body"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Create</button>
                 </form>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Repositories\Interfaces\BlogPostRepositoryInterface;
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 
 class BlogController extends Controller
 {
@@ -22,68 +24,67 @@ class BlogController extends Controller
     }
 
     /**
-     * @return string
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         $posts = $this->blogPostRepository->getBlogsOnPage();
         return $posts;
     }
-
-    public function create()
+     
+    /**
+     * @param Request $request
+     * 
+     * @return JsonResponse
+     */
+    public function store(Request $request): JsonResponse
     {
-        return view('blog.create');
+        $blogPost = $this->blogPostRepository->save($request->all());
+        return response()->json('Post created!');    
     }
-
-   
-    public function store(Request $request)
-    {
-        $newPost = BlogPost::create([
-            'title' => $request->title,
-            'body' => $request->body,
-            'user_id' => 1
-        ]);
-
-        return redirect('blog/' . $newPost->id);    }
 
     /**
      * @param int $blogPostId
      * 
-     * @return string
+     * @return JsonResponse
      */
-    public function show(int $blogPostId)
+    public function show(int $blogPostId): JsonResponse
     {
         $blogPost = $this->blogPostRepository->find($blogPostId);
         return response()->json($blogPost);
     }
-
     
-    public function edit(int $blogPostId)
+    /**
+     * @param int $blogPostId
+     * 
+     * @return JsonResponse
+     */
+    public function edit(int $blogPostId): JsonResponse
     {
         $blogPost = $this->blogPostRepository->find($blogPostId);
-        return view('blog.edit', [
-            'post' => $blogPost,
-        ]);
+        return response()->json($blogPost);
+    }
+    
+    /**
+     * @param Request $request
+     * @param int $blogPostId
+     * 
+     * @return JsonResponse
+     */
+    public function update(Request $request, int $blogPostId): JsonResponse
+    {
+        $blogPost = $this->blogPostRepository->save($request->all(), $blogPostId);
+        return response()->json('Post updated!');
     }
 
-    
-    public function update(Request $request, int $blogPostId)
+    /**
+     * @param int $blogPostId
+     * 
+     * @return JsonResponse
+     */
+    public function destroy(int $blogPostId): JsonResponse
     {
-        $this->blogPostRepository->update($request::input); 
-
-        $blogPost->update([
-            'title' => $request->title,
-            'body' => $request->body
-        ]);
-
-        return redirect("blog/$blogPostId/edit");
-    }
-
-    
-    public function destroy(int $blogPostId)
-    {
-        $blogPost->delete();
-
-        return redirect('/blog');
+        $this->blogPostRepository->delete($blogPostId);
+        return response()->json('Post deleted!');
     }
 }

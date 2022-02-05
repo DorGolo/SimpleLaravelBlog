@@ -26,9 +26,14 @@ class BlogPostRepository extends BaseRepository implements BlogPostRepositoryInt
         return response()->json($data);
     }
 
-    public function save(array $blogPost): BlogPost
+    public function save(array $details, $id = null): BlogPost
     {
-
+        if ($blogPost = $this->find($id)) {
+            $blogPost->update($details);
+        } else {
+            $blogPost = new BlogPost($details);
+            $blogPost->save();
+        }
+        return $blogPost;
     }
-
 }

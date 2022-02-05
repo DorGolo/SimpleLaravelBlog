@@ -27,4 +27,6 @@ interface BaseRepositoryInterface
     * @return Collection
     */
    public function getCollection(): Collection;
+
+   public function delete(int $id);
 }

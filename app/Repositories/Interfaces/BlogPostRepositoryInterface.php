@@ -14,11 +14,12 @@ use Illuminate\Http\JsonResponse;
 interface BlogPostRepositoryInterface
 {
     /**
-     * @param array $blogPost
+     * @param array $details
+     * @param null $id
      * 
      * @return BlogPost
      */
-    public function save(array $blogPost): BlogPost;
+    public function save(array $details, $id = null): BlogPost;
 
     /**
      * @param int $page

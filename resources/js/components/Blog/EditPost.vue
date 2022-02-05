@@ -10,7 +10,7 @@
                     </div>
                     <div class="form-group">
                         <label>Content</label>
-                        <input type="textbox" class="form-control" v-model="blogPost.body">
+                        <textarea class="form-control" v-model="blogPost.body"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>

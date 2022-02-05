@@ -18,6 +18,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('api')->group(function () {
-    Route::resource('blog', \App\Http\Controllers\BlogController::class);
+Route::group(['middleware' => ['auth:sanctum', 'api']], function () {
+    Route::resource('blog', \App\Http\Controllers\BlogController::class, ['except' => ['index', 'show']]);
 });
+
+Route::resource('blog', \App\Http\Controllers\BlogController::class, ['only' => ['index', 'show']]);

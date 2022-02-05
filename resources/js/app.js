@@ -14,7 +14,7 @@
  import {
      routes
  } from './routes';
- import Vue from 'vue'
+ import Vue from 'vue';
  
  /**
   * Next, we will create a fresh Vue application instance and attach it to
@@ -24,6 +24,7 @@
  
  Vue.use(VueRouter);
  Vue.use(VueAxios, axios);
+ Vue.component('pagination', require('laravel-vue-pagination'));
  
  const router = new VueRouter({
      mode: 'history',
