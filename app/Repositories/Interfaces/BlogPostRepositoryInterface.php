@@ -5,6 +5,7 @@ namespace App\Repositories\Interfaces;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use App\Models\BlogPost;
+use Illuminate\Http\JsonResponse;
 
 /**
 * Interface BlogPostRepositoryInterface
@@ -25,5 +26,5 @@ interface BlogPostRepositoryInterface
      * 
      * @return Collection
      */
-    public function getBlogsOnPage(int $page = 1, int $limit = 20): Collection;
+    public function getBlogsOnPage(int $page = 20): JsonResponse;
 }

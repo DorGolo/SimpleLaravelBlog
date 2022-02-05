@@ -8,19 +8,26 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    private $blogPostRepository;
+    /**
+     * @var BlogPostRepositoryInterface
+     */
+    private BlogPostRepositoryInterface $blogPostRepository;
   
+    /**
+     * @param BlogPostRepositoryInterface $blogPostRepository
+     */
     public function __construct(BlogPostRepositoryInterface $blogPostRepository)
     {
         $this->blogPostRepository = $blogPostRepository;
     }
 
+    /**
+     * @return string
+     */
     public function index()
     {
-        $posts = $this->blogPostRepository->getFeatured();
-	    return view('blog.index', [
-            'posts' => $posts,
-        ]); //returns the view with posts
+        $posts = $this->blogPostRepository->getBlogsOnPage();
+        return $posts;
     }
 
     public function create()
@@ -39,12 +46,15 @@ class BlogController extends Controller
 
         return redirect('blog/' . $newPost->id);    }
 
+    /**
+     * @param int $blogPostId
+     * 
+     * @return string
+     */
     public function show(int $blogPostId)
     {
         $blogPost = $this->blogPostRepository->find($blogPostId);
-        return view('blog.post', [
-            'post' => $blogPost,
-        ]); //returns the view with the post
+        return response()->json($blogPost);
     }
 
     
