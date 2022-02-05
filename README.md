@@ -15,7 +15,7 @@ To start the project up you'll have to follow the steps below.
 	 2. To shut down the project you just need to run ``docker-compose down``
 	 3. These commands might be different depending on the docker version you installed
  3. Once docker has fully compiled you need to go into the docker container and run the following commands to ensure that all PHP and JavaScript vendor modules are installed correctly
-	 > ``composer install -v``
+	 > ``composer install -v`` \
 	 > ``npm i``
   
 
