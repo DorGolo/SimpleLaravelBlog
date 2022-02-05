@@ -11,12 +11,12 @@ To start the project up you'll have to follow the steps below.
  1. You will need to make sure you have docker installed
 	 a. If you don't, you can follow the steps to install Docker [here](https://docs.docker.com/get-docker/)
  2. Once docker is installed you just need to run ``docker-compose up --build`` for the initial build
-	 a. After the first run you can use ``docker-compose up`` without the build flag
-	 b. To shut down the project you just need to run ``docker-compose down``
-	 c. These commands might be different depending on the docker version you installed
+     1. After the first run you can use ``docker-compose up`` without the build flag
+	 2. To shut down the project you just need to run ``docker-compose down``
+	 3. These commands might be different depending on the docker version you installed
  3. Once docker has fully compiled you need to go into the docker container and run the following commands to ensure that all PHP and JavaScript vendor modules are installed correctly
-	 a. ``composer install -v``
-	 b. ``npm i``
+	 > ``composer install -v``
+	 > ``npm i``
   
 
 ## Security Vulnerabilities
