@@ -23,7 +23,13 @@
     export default{
         data(){
             return{blogPost:{}}
-              },
+        },
+        beforeRouteEnter(to, from, next) {
+            if (!window.Laravel.isLoggedin) {
+                return next('');
+            }
+            next();
+        },
         created(){
             this.axios.get(`http://localhost:8000/api/blog/${this.$route.params.id}`).then((res)=> 
                     {console.log(res);

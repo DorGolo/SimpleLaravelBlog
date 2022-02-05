@@ -15,11 +15,11 @@ interface BlogPostRepositoryInterface
 {
     /**
      * @param array $details
-     * @param null $id
+     * @param int|null $id
      * 
      * @return BlogPost
      */
-    public function save(array $details, $id = null): BlogPost;
+    public function save(array $details, int $id = null): BlogPost;
 
     /**
      * @param int $page

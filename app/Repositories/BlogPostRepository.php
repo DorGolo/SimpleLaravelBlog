@@ -20,13 +20,24 @@ class BlogPostRepository extends BaseRepository implements BlogPostRepositoryInt
         parent::__construct($model);
     }
 
-    public function getBlogsOnPage(int $onPage = 20): JsonResponse
+    /**
+     * @param int $onPage
+     * 
+     * @return JsonResponse
+     */
+    public function getBlogsOnPage(int $onPage = 5): JsonResponse
     {
         $data = $this->model::paginate($onPage);
         return response()->json($data);
     }
 
-    public function save(array $details, $id = null): BlogPost
+    /**
+     * @param array $details
+     * @param int|null $id
+     * 
+     * @return BlogPost
+     */
+    public function save(array $details, int $id = null): BlogPost
     {
         if ($blogPost = $this->find($id)) {
             $blogPost->update($details);

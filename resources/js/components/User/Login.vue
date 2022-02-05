@@ -55,22 +55,22 @@ export default {
         handleSubmit(e) {
             e.preventDefault()
             if (this.password.length > 0) {
-                this.$axios.get('/sanctum/csrf-cookie').then(response => {
-                    this.$axios.post('api/login', {
+                this.axios.get('/sanctum/csrf-cookie').then(response => {
+                    this.axios.post('api/login', {
                         email: this.email,
                         password: this.password
                     })
-                        .then(response => {
-                            console.log(response.data)
-                            if (response.data.success) {
-                                this.$router.go('/dashboard')
-                            } else {
-                                this.error = response.data.message
-                            }
-                        })
-                        .catch(function (error) {
-                            console.error(error);
-                        });
+                    .then(response => {
+                        console.log(response.data)
+                        if (response.data.success) {
+                            this.$router.push('/')
+                        } else {
+                            this.error = response.data.message
+                        }
+                    })
+                    .catch(function (error) {
+                        console.error(error);
+                    });
                 })
             }
         }

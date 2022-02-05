@@ -2,6 +2,7 @@ import AllBlog from './components/Blog/AllPosts.vue';
 import CreateBlog from './components/Blog/CreatePost.vue';
 import EditBlog from './components/Blog/EditPost.vue';
 import ViewBlog from './components/Blog/ViewPost.vue';
+import Login from './components/User/Login.vue';
 
 export const routes = [{
         name: 'home',
@@ -19,8 +20,13 @@ export const routes = [{
         component: EditBlog
     },
     {
+        name: 'login',
+        path: '/login',
+        component: Login
+    },
+    {
         name: 'view',
         path: '/:id',
         component: ViewBlog
-    }
+    },
 ];
