@@ -41,6 +41,7 @@ class BlogController extends Controller
 
     public function show(int $blogPostId)
     {
+        $blogPost = $this->blogPostRepository->find($blogPostId);
         return view('blog.post', [
             'post' => $blogPost,
         ]); //returns the view with the post
@@ -49,6 +50,7 @@ class BlogController extends Controller
     
     public function edit(int $blogPostId)
     {
+        $blogPost = $this->blogPostRepository->find($blogPostId);
         return view('blog.edit', [
             'post' => $blogPost,
         ]);

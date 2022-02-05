@@ -29,3 +29,10 @@ Route::controller(\App\Http\Controllers\BlogController::class)->group(function (
     
     Route::delete('/blog/{blogPostId}', 'destroy');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
