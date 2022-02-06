@@ -11286,3 +11286,11 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.card {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.admin-btns {
+  margin-left: auto;
+}

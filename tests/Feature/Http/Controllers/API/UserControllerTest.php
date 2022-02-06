@@ -42,28 +42,28 @@ class UserControllerTest extends TestCase
     public function testIndex(): void
     {
         /** @todo This test is incomplete. */
-        $this->getJson('/path')
+        $this->getJson('/api/user')
             ->assertStatus(200);
     }
 
     public function testLogin(): void
     {
         /** @todo This test is incomplete. */
-        $this->getJson('/path')
+        $this->getJson('/api/user/login')
             ->assertStatus(200);
     }
 
     public function testLogout(): void
     {
         /** @todo This test is incomplete. */
-        $this->getJson('/path')
+        $this->getJson('/api/user/logout')
             ->assertStatus(200);
     }
 
     public function testRegister(): void
     {
         /** @todo This test is incomplete. */
-        $this->getJson('/path')
+        $this->getJson('/api/user/register')
             ->assertStatus(200);
     }
 }

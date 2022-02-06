@@ -20,10 +20,6 @@
                         this.blogPost = res.data;});
                 },
         methods:{
-            updateBlogPost(){
-                this.axios.patch(`/api/blog/${this.$route.params.id}`, this.blogPost).then((res)=> 
-                {this.$router.push({name: 'home'});});
-            }
         }
     } 
 </script>

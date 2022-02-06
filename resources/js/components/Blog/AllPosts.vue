@@ -1,15 +1,19 @@
 <template>
     <div>
-        <div v-for="blogPost in blogPosts.data" v-bind:key="blogPost.id" class="col-md-6">
-            <div><h3>{{blogPost.title}}</h3></div>
-            <div>
-                {{ getFormattedBlogPost(blogPost.body) }}
-            </div>
-            <div>
-                <div class="btn-group" role="group">
-                    <router-link :to="{name: 'view', params: {id: blogPost.id}}" class="btn btn-success">View</router-link>
-                    <router-link v-if="user.name" :to="{name: 'edit', params: {id: blogPost.id}}" class="btn btn-success">Edit</router-link>
-                    <button v-if="user.name" class="btn btn-danger" @click="deleteBlogPost(blogPost.id)">Delete</button>
+        <div v-for="blogPost in blogPosts.data" v-bind:key="blogPost.id" class="col-md-6 card mycard">
+            <div class="card-body">
+                <h5 class="card-title">{{blogPost.title}}</h5>
+                <div class="card-text">
+                    {{ getFormattedBlogPost(blogPost.body) }}
+                </div>
+                <div>
+                    <div class="btn-group" role="group">
+                        <router-link :to="{name: 'view', params: {id: blogPost.id}}" class="btn btn-success">View</router-link>
+                    </div>
+                    <div class="btn-group admin-btns" role="group" v-if="user.name">
+                        <router-link :to="{name: 'edit', params: {id: blogPost.id}}" class="btn btn-success">Edit</router-link>
+                        <button class="btn btn-danger admin-btn" @click="deleteBlogPost(blogPost.id)">Delete</button>
+                    </div>
                 </div>
             </div>
         </div>

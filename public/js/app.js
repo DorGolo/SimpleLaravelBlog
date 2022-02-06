@@ -5358,6 +5358,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5566,17 +5570,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.blogPost = res.data;
     });
   },
-  methods: {
-    updateBlogPost: function updateBlogPost() {
-      var _this2 = this;
-
-      this.axios.patch("/api/blog/".concat(this.$route.params.id), this.blogPost).then(function (res) {
-        _this2.$router.push({
-          name: 'home'
-        });
-      });
-    }
-  }
+  methods: {}
 });
 
 /***/ }),
@@ -29706,65 +29700,81 @@ var render = function () {
     "div",
     [
       _vm._l(_vm.blogPosts.data, function (blogPost) {
-        return _c("div", { key: blogPost.id, staticClass: "col-md-6" }, [
-          _c("div", [_c("h3", [_vm._v(_vm._s(blogPost.title))])]),
-          _vm._v(" "),
-          _c("div", [
-            _vm._v(
-              "\n            " +
-                _vm._s(_vm.getFormattedBlogPost(blogPost.body)) +
-                "\n        "
-            ),
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c(
-              "div",
-              { staticClass: "btn-group", attrs: { role: "group" } },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-success",
-                    attrs: {
-                      to: { name: "view", params: { id: blogPost.id } },
-                    },
-                  },
-                  [_vm._v("View")]
+        return _c(
+          "div",
+          { key: blogPost.id, staticClass: "col-md-6 card mycard" },
+          [
+            _c("div", { staticClass: "card-body" }, [
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v(_vm._s(blogPost.title)),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-text" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.getFormattedBlogPost(blogPost.body)) +
+                    "\n            "
                 ),
-                _vm._v(" "),
-                _vm.user.name
-                  ? _c(
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c(
+                  "div",
+                  { staticClass: "btn-group", attrs: { role: "group" } },
+                  [
+                    _c(
                       "router-link",
                       {
                         staticClass: "btn btn-success",
                         attrs: {
-                          to: { name: "edit", params: { id: blogPost.id } },
+                          to: { name: "view", params: { id: blogPost.id } },
                         },
                       },
-                      [_vm._v("Edit")]
-                    )
-                  : _vm._e(),
+                      [_vm._v("View")]
+                    ),
+                  ],
+                  1
+                ),
                 _vm._v(" "),
                 _vm.user.name
                   ? _c(
-                      "button",
+                      "div",
                       {
-                        staticClass: "btn btn-danger",
-                        on: {
-                          click: function ($event) {
-                            return _vm.deleteBlogPost(blogPost.id)
-                          },
-                        },
+                        staticClass: "btn-group admin-btns",
+                        attrs: { role: "group" },
                       },
-                      [_vm._v("Delete")]
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-success",
+                            attrs: {
+                              to: { name: "edit", params: { id: blogPost.id } },
+                            },
+                          },
+                          [_vm._v("Edit")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger admin-btn",
+                            on: {
+                              click: function ($event) {
+                                return _vm.deleteBlogPost(blogPost.id)
+                              },
+                            },
+                          },
+                          [_vm._v("Delete")]
+                        ),
+                      ],
+                      1
                     )
                   : _vm._e(),
-              ],
-              1
-            ),
-          ]),
-        ])
+              ]),
+            ]),
+          ]
+        )
       }),
       _vm._v(" "),
       _c("pagination", {
