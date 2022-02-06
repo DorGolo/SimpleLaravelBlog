@@ -5664,6 +5664,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             password: _this.password
           }).then(function (response) {
             _this.signIn();
+
+            window.location.href = "/";
           })["catch"](function (error) {
             console.error(error);
           });

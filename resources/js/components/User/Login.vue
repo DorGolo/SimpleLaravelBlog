@@ -66,6 +66,7 @@ export default {
                     })
                     .then(response => {
                         this.signIn();
+                        window.location.href = "/"
                     })
                     .catch(function (error) {
                         console.error(error);
