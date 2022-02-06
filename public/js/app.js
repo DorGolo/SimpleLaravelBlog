@@ -5373,11 +5373,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.axios["delete"]('/api/blog/' + id).then(function (response) {
-        var i = _this.blogPosts.map(function (data) {
+        var i = _this.blogPosts.data.map(function (data) {
           return data.id;
         }).indexOf(id);
 
-        _this.blogPosts.splice(i, 1);
+        _this.blogPosts.data.splice(i, 1);
       });
     },
     getResults: function getResults(page) {

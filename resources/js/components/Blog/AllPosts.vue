@@ -31,8 +31,8 @@
         methods:{
             deleteBlogPost(id){
                 this.axios.delete('/api/blog/'+id).then(response =>{
-                    let i=this.blogPosts.map(data=>data.id).indexOf(id);
-                    this.blogPosts.splice(i, 1)
+                    let i=this.blogPosts.data.map(data=>data.id).indexOf(id);
+                    this.blogPosts.data.splice(i, 1)
                 });
             },
             getResults(page) {

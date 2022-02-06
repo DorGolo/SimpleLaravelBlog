@@ -52,6 +52,7 @@ class BlogControllerTest extends TestCase
     {
         /** @todo This test is incomplete. */
         $this->get('/path')
+            // ->assert
             ->assertStatus(200);
     }
 
