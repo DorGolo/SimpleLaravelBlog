@@ -25,19 +25,19 @@
             return{blogPost:{}}
         },
         beforeRouteEnter(to, from, next) {
-            if (!window.Laravel.isLoggedin) {
+            if (!window.User) {
                 return next('');
             }
             next();
         },
         created(){
-            this.axios.get(`http://localhost:8000/api/blog/${this.$route.params.id}`).then((res)=> 
+            this.axios.get(`/api/blog/${this.$route.params.id}`).then((res)=> 
                     {console.log(res);
                         this.blogPost = res.data;});
                 },
         methods:{
             updateBlogPost(){
-                this.axios.patch(`http://localhost:8000/api/blog/${this.$route.params.id}`, this.blogPost).then((res)=> 
+                this.axios.patch(`/api/blog/${this.$route.params.id}`, this.blogPost).then((res)=> 
                 {this.$router.push({name: 'home'});});
             }
         }

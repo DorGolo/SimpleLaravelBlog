@@ -6,6 +6,7 @@ use App\Http\Controllers\API\UserController;
 
 Route::post('login', [UserController::class, 'login'])->middleware('guest');
 Route::post('logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
+Route::get('/', [UserController::class, 'index']);
 
 Route::group(['middleware' => ['auth:sanctum', 'api']], function () {
     Route::resource('blog', \App\Http\Controllers\BlogController::class, ['except' => ['index', 'show']]);

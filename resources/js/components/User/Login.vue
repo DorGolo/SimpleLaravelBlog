@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
     data() {
         return {
@@ -52,6 +53,9 @@ export default {
         }
     },
     methods: {
+        ...mapActions({
+            signIn:'auth/login'
+        }),
         handleSubmit(e) {
             e.preventDefault()
             if (this.password.length > 0) {
@@ -61,12 +65,7 @@ export default {
                         password: this.password
                     })
                     .then(response => {
-                        console.log(response.data)
-                        if (response.data.success) {
-                            this.$router.push('/')
-                        } else {
-                            this.error = response.data.message
-                        }
+                        this.signIn();
                     })
                     .catch(function (error) {
                         console.error(error);
@@ -76,8 +75,8 @@ export default {
         }
     },
     beforeRouteEnter(to, from, next) {
-        if (window.Laravel.isLoggedin) {
-            return next('dashboard');
+        if (window.User.name) {
+            return next('');
         }
         next();
     }

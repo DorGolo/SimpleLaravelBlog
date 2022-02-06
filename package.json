@@ -24,8 +24,11 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "jquery": "^3.6.0",
         "laravel-vue-pagination": "^2.3.1",
+        "popper.js": "^1.16.1",
         "vue-axios": "^3.4.0",
-        "vue-router": "^3.5.3"
+        "vue-router": "^3.5.3",
+        "vuex-persistedstate": "^4.1.0"
     }
 }

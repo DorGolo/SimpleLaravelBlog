@@ -15,7 +15,8 @@
      routes
  } from './routes';
  import Vue from 'vue';
- 
+ import store from './store'
+
  /**
   * Next, we will create a fresh Vue application instance and attach it to
   * the page. Then, you may begin adding components to this application
@@ -35,4 +36,5 @@
      el: '#app',
      router: router,
      render: h => h(App),
+     store: store,
  });

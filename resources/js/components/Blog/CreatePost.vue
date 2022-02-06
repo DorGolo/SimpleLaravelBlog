@@ -26,7 +26,7 @@
                },
         methods:{
             addblogPost(){
-                this.axios.post('http://localhost:8000/api/blog', this.blogPost).then(response =>(this.$router.push({name: 'home'})))
+                this.axios.post('/api/blog', this.blogPost).then(response =>(this.$router.push({name: 'home'})))
                 .catch(err=> console.log(err))
                 .finally(()=> this.loadin=false)
             }

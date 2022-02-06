@@ -8,8 +8,8 @@
             <div>
                 <div class="btn-group" role="group">
                     <router-link :to="{name: 'view', params: {id: blogPost.id}}" class="btn btn-success">View</router-link>
-                    <router-link :to="{name: 'edit', params: {id: blogPost.id}}" class="btn btn-success">Edit</router-link>
-                    <button class="btn btn-danger" @click="deleteBlogPost(blogPost.id)">Delete</button>
+                    <router-link v-if="user.name" :to="{name: 'edit', params: {id: blogPost.id}}" class="btn btn-success">Edit</router-link>
+                    <button v-if="user.name" class="btn btn-danger" @click="deleteBlogPost(blogPost.id)">Delete</button>
                 </div>
             </div>
         </div>
@@ -22,13 +22,14 @@
         data() {
             return {
                 blogPosts: {},
+                user: window.User
             }
         },
         created(){
             this.getResults();
         },
         methods:{
-           deleteBlogPost(id){
+            deleteBlogPost(id){
                 this.axios.delete('/api/blog/'+id).then(response =>{
                     let i=this.blogPosts.map(data=>data.id).indexOf(id);
                     this.blogPosts.splice(i, 1)

@@ -12,6 +12,16 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     /**
+     * @param Request $request
+     * 
+     * @return [type]
+     */
+    public function index(Request $request)
+    {
+        return response()->json(Auth::user());
+    }
+
+    /**
      * Login
      */
     public function login(Request $request)
@@ -33,6 +43,7 @@ class UserController extends Controller
         $response = [
             'success' => $success,
             'message' => $message,
+            'user' => Auth::user(),
         ];
         return response()->json($response);
     }
