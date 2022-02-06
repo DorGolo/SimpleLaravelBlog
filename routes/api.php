@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
 
 Route::post('login', [UserController::class, 'login'])->middleware('guest');
+Route::post('register', [UserController::class, 'register'])->middleware('guest');
 Route::post('logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
 Route::get('/', [UserController::class, 'index']);
 

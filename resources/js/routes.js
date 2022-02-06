@@ -3,6 +3,7 @@ import CreateBlog from './components/Blog/CreatePost.vue';
 import EditBlog from './components/Blog/EditPost.vue';
 import ViewBlog from './components/Blog/ViewPost.vue';
 import Login from './components/User/Login.vue';
+import Register from './components/User/Register.vue';
 
 export const routes = [{
         name: 'home',
@@ -23,6 +24,11 @@ export const routes = [{
         name: 'login',
         path: '/login',
         component: Login
+    },
+    {
+        name: 'register',
+        path: '/register',
+        component: Register
     },
     {
         name: 'view',

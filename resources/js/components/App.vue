@@ -9,7 +9,10 @@
                         <router-link to="/create" class="nav-item nav-link">Create Blog Post</router-link>
                         <a style="cursor: pointer;" @click="logout" class="nav-item nav-link">Logout</a>
                     </template>
-                    <router-link v-if="!isLoggedin()" to="/login" class="nav-item nav-link" >Login</router-link>
+                    <template v-else>
+                        <router-link to="/login" class="nav-item nav-link" >Login</router-link>
+                        <router-link to="/register" class="nav-item nav-link" >Register</router-link>
+                    </template>
                 </div>
             </div>
         </nav>
